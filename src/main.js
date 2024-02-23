@@ -9,10 +9,9 @@ const task = document.querySelector(".task");
 const taskComplete = document.querySelector(".tasks");
 let id = 0;
 
-const stylescheckComplete = 'text-decoration-line-through';
+const stylescheckComplete = "text-decoration-line-through";
 
 function addTask(task, id, done, trash) {
-   
   const element = ` <li 
     class="d-flex align-items-center justify-content-center rounded-pill p-3"
   >
@@ -20,6 +19,7 @@ function addTask(task, id, done, trash) {
     <span id="task" class="mx-5">${task}</span>
     <input type="button" id="${id}" class="btn btn-link ms-2" data="remove">
               <svg
+                data="remove"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -44,7 +44,12 @@ function addTask(task, id, done, trash) {
 }
 
 function taskDone(element) {
-  element.parentNode.querySelector("#task").classList.toggle(stylescheckComplete);
+  element.parentNode
+    .querySelector("#task")
+    .classList.toggle(stylescheckComplete);
+}
+function removeTask(element) {
+  element.parentNode.parentNode.removeChild(element.parentNode);
 }
 
 button.addEventListener("click", () => {
@@ -55,23 +60,25 @@ button.addEventListener("click", () => {
   input.value = "";
   id++;
 });
- 
-document.addEventListener('keyup', function (e) {
-    if (e.key === 'Enter') {
-        const task = input.value;
-        if (task) {
-          addTask(task, id, false, false);
-        }
-        input.value = "";
-        id++;
-    }});
 
-    list.addEventListener('click', function (e) {
-        const element = e.target;
-        const elementData = element.attributes.data.value;
-        if (elementData === 'done') {
-            taskDone(element)
-        }else if (elementData === 'remove') {
-            removeTask(element)
-        }
-    });
+document.addEventListener("keyup", function (e) {
+  if (e.key === "Enter") {
+    const task = input.value;
+    if (task) {
+      addTask(task, id, false, false);
+    }
+    input.value = "";
+    id++;
+  }
+});
+
+list.addEventListener("click", function (e) {
+  const element = e.target;
+  const elementData = element.attributes.data.value;
+  console.log(elementData);
+  if (elementData === "done") {
+    taskDone(element);
+  } else if (elementData === "remove") {
+    removeTask(element);
+  }
+});
