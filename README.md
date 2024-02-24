@@ -10,7 +10,7 @@ Esta es una aplicación práctica de lista de tareas (ToDoList) que permite a lo
 - Almacenamiento local de tareas utilizando localStorage.
 
 ## Instalación
-1. Clona o descarga este repositorio: https://github.com/DevKendrySoto/ToDoList.git.
+1. Clona o descarga este repositorio: `https://github.com/DevKendrySoto/ToDoList.git`.
 2. Abre el archivo `index.html` en tu navegador web.
 
 ## Uso
