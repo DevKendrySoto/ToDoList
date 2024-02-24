@@ -15,10 +15,9 @@ Esta es una aplicación práctica de lista de tareas (ToDoList) que permite a lo
 
 ## Uso
 1. Escribe la tarea que deseas agregar en el campo de texto en la parte superior.
-2. Selecciona la fecha para la tarea usando el selector de fecha.
-3. Haz clic en el botón "Agregar tarea" para agregar la tarea a la lista.
-4. Para marcar una tarea como completada, haz clic en el checkbox junto a ella.
-5. Para eliminar una tarea, haz clic en el botón de eliminar (ícono de papelera) junto a ella.
+2. Haz clic en el botón "Agregar tarea" para agregar la tarea a la lista.
+3. Para marcar una tarea como completada, haz clic en el checkbox junto a ella.
+4. Para eliminar una tarea, haz clic en el botón de eliminar (ícono de papelera) junto a ella.
 
 ## Tecnologías utilizadas
 - HTML5
