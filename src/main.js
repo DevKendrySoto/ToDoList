@@ -4,12 +4,20 @@ const button = document.querySelector("#add");
 const list = document.querySelector("#list");
 const check = document.querySelector("#check");
 const remove = document.querySelector("#remove");
-
 const task = document.querySelector(".task");
 const taskComplete = document.querySelector(".tasks");
-let id = 0;
+let id;
+let LIST;
 
 const stylescheckComplete = "text-decoration-line-through";
+
+const TM = new Date();
+date.innerHTML = TM.toLocaleDateString("en-US", {
+  weekday: "long",
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+});
 
 function addTask(task, id, done, trash) {
   const element = ` <li 
@@ -47,16 +55,25 @@ function taskDone(element) {
   element.parentNode
     .querySelector("#task")
     .classList.toggle(stylescheckComplete);
+  LIST[element.id].done = LIST[element.id].done ? false : true;
 }
 function removeTask(element) {
   element.parentNode.parentNode.removeChild(element.parentNode);
+  LIST[element.id].trash = true;
 }
 
 button.addEventListener("click", () => {
   const task = input.value;
   if (task) {
     addTask(task, id, false, false);
+    LIST.push({
+      name: task,
+      id: id,
+      done: false,
+      trash: false,
+    });
   }
+  localStorage.setItem("TDList", JSON.stringify(LIST));
   input.value = "";
   id++;
 });
@@ -66,7 +83,14 @@ document.addEventListener("keyup", function (e) {
     const task = input.value;
     if (task) {
       addTask(task, id, false, false);
+      LIST.push({
+        name: task,
+        id: id,
+        done: false,
+        trash: false,
+      });
     }
+    localStorage.setItem("TDList", JSON.stringify(LIST));
     input.value = "";
     id++;
   }
@@ -75,10 +99,26 @@ document.addEventListener("keyup", function (e) {
 list.addEventListener("click", function (e) {
   const element = e.target;
   const elementData = element.attributes.data.value;
-  console.log(elementData);
   if (elementData === "done") {
     taskDone(element);
   } else if (elementData === "remove") {
     removeTask(element);
   }
+  localStorage.setItem("TDList", JSON.stringify(LIST));
 });
+
+let data = localStorage.getItem("TDList");
+if (data) {
+  LIST = JSON.parse(data);
+  loadList(LIST);
+  id = LIST.length;
+} else {
+  LIST = [];
+  id = 0;
+}
+
+function loadList(array) {
+  array.forEach(function (item) {
+    addTask(item.name, item.id, item.done, item.trash);
+  });
+}
