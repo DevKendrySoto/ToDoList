@@ -1,0 +1,15 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "## Descripción Esta es una aplicación práctica de lista de tareas (ToDoList) que permite a los usuarios agregar nuevas tareas, marcarlas como completadas y eliminarlas cuando sea necesario. La aplicación utiliza JavaScript, Bootstrap y localStorage para almacenar las tareas localmente en el navegador del usuario.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
